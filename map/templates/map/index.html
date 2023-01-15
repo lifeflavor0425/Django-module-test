@@ -1,0 +1,59 @@
+<!-- C/Code/mysite/elections/templates/elections/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>지하철</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <form action="{% url  'station_line_search' %}" method="POST", id='search_mode'>
+      {% csrf_token %}
+      <div class="container my-3">
+        <select name="search_line" id="search_line">
+          <option value="노선선택" selected>노선선택</option>
+          <option value='1호선'>1호선</option>
+          <option value="2호선">2호선</option>
+          <option value="3호선">3호선</option>
+          <option value="4호선">4호선</option>
+          <option value="5호선">5호선</option>
+          <option value="6호선">6호선</option>
+          <option value="7호선">7호선</option>
+          <option value="8호선">8호선</option>
+          <option value="9호선">9호선</option> 
+        </select>
+        <select name="search_time" id="search_time">
+          <option value="시간선택" selected>시간선택</option>
+          <option value="07">07시</option>
+          <option value="08">08시</option>
+          <option value="09">09시</option>
+          <option value="10">10시</option>
+          <option value="11">11시</option>
+          <option value="12">12시</option>
+          <option value="13">13시</option>
+          <option value="14">14시</option>
+          <option value="15">15시</option>
+          <option value="16">16시</option>
+          <option value="17">17시</option>
+          <option value="18">18시</option>
+          <option value="19">19시</option>
+          <option value="20">20시</option>
+          <option value="21">21시</option>
+          <option value="22">22시</option>
+          <option value="23">23시</option>
+          <option value="24">24시</option>
+        </select>
+      </div>
+      <input type="submit" value="검색" />
+    </form>
+    <div id='map'>
+        {{map|safe}}
+    <div>
+  </body>
+</html>
