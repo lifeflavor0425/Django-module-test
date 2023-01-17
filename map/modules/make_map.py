@@ -10,7 +10,7 @@ from map.modules import example
 
 # DF 가져오기
 subway_location = pd.read_excel("./map/public/all_station_line.xlsx")
-reusult_df = pd.read_excel("./map/public/result_df.xlsx")
+result_df = pd.read_excel("./map/public/result_df.xlsx")
 """# 지도에 1~9호선 그리기"""
 # 노선 색
 fill_color = {
@@ -88,13 +88,13 @@ def count_(input_line, input_time, tran_seoul_map):
         if line not in one_time_line_stations:
             one_time_line_stations.append(line)
     # 확률 계산
-    cal_per_dict = example.cal_per(input_line, input_time, one_time_line_stations, reusult_df)
+    cal_per_dict = example.cal_per(input_line, input_time, one_time_line_stations, result_df)
     cal_per_cnt = 0
-    for idx in reusult_df.index:  # 데이터 한개씩 뽑아서 역마다 점찍기
-        lat = reusult_df.loc[idx, "lat"]
-        long = reusult_df.loc[idx, "long"]
-        line = reusult_df.loc[idx, "subway"]
-        station = reusult_df.loc[idx, "station"]
+    for idx in result_df.index:  # 데이터 한개씩 뽑아서 역마다 점찍기
+        lat = result_df.loc[idx, "lat"]
+        long = result_df.loc[idx, "long"]
+        line = result_df.loc[idx, "subway"]
+        station = result_df.loc[idx, "station"]
         if input_line == line:  # 입력한 노선만 점 찍기
             folium.Marker(  # 역마다 마커 표시
                 location=[lat, long],
